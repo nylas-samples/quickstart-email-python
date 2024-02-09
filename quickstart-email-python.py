@@ -46,8 +46,8 @@ def login():
     else:
         return f'{session["grant_id"]}'
 
-@app.route("/nylas/read-emails", methods=["GET"])
-def read_emails():
+@app.route("/nylas/recent-emails", methods=["GET"])
+def recent_emails():
     query_params = {"limit": 5} 
     try:
         messages, _, _ = nylas.messages.list(session["grant_id"], query_params)
