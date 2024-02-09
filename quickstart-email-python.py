@@ -18,7 +18,8 @@ Session(app)
 
 # Initialize Nylas client
 nylas = Client(
-    api_key = os.environ.get("V3_API_KEY")
+    api_key = os.environ.get("NYLAS_API_KEY"),
+    api_uri = os.environ.get("NYLAS_API_URI")
 )
 
 # Call the authorization page
@@ -27,8 +28,8 @@ def authorized():
     if session.get("grant_id") is None:
         code = request.args.get("code")
         exchangeRequest = CodeExchangeRequest({"redirect_uri": "http://localhost:5000/oauth/exchange",
-                                                                                  "code": code,
-                                                                                  "client_id": os.environ.get("V3_CLIENT")})
+                                               "code": code,
+                                               "client_id": os.environ.get("NYLAS_CLIENT_ID")})
         exchange = nylas.auth.exchange_code_for_token(exchangeRequest)
         session["grant_id"] = exchange.grant_id
         return redirect(url_for("login"))
@@ -37,9 +38,8 @@ def authorized():
 @app.route("/nylas/auth", methods=["GET"])
 def login():
     if session.get("grant_id") is None:
-        config = URLForAuthenticationConfig({"client_id": os.environ.get("V3_CLIENT"), 
-                                                                      "redirect_uri" : "http://localhost:5000/oauth/exchange",
-                                                                      })
+        config = URLForAuthenticationConfig({"client_id": os.environ.get("NYLAS_CLIENT_ID"), 
+                                            "redirect_uri" : "http://localhost:5000/oauth/exchange"})
         url = nylas.auth.url_for_oauth2(config)
         print(url)
         return redirect(url)
