@@ -19,7 +19,7 @@ python quickstart-email-python.py
 ```env
 NYLAS_CLIENT_ID=""
 NYLAS_API_KEY=""
-NYLAS_API_URI="https://api.us.nylas.com""
+NYLAS_API_URI="https://api.us.nylas.com"
 EMAIL="<RECIPIENT_EMAIL_ADDRESS_HERE>"
 ```
 
