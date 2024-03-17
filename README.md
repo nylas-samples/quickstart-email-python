@@ -9,7 +9,7 @@ pip3 install Flask, dotenv
 2. Run the project
 
 ```bash
-python quickstart-email-ruby.py
+python quickstart-email-python.py
 ```
 
 3. In the Nylas dashboard, create a new application and set the Google connector redirect URL to `http://localhost:5000/oauth/exchange`
