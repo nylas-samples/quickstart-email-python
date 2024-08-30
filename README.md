@@ -12,7 +12,7 @@ pip3 install Flask, dotenv
 python quickstart-email-python.py
 ```
 
-3. In the Nylas dashboard, create a new application and set the Google connector redirect URL to `http://localhost:5000/oauth/exchange`
+3. In the Nylas dashboard, create a new application and set the hosted auth callback URL to `http://localhost:5000/oauth/exchange`
 
 4. env variables
 
